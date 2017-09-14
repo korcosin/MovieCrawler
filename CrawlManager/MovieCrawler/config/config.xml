@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<crawl>
+    <kobis>
+        <!-- KOBIS API KEY-->
+        <key><![CDATA[]]></key>
+        <!-- //KOBIS API KEY-->
+
+        <history><![CDATA[d:\crawl]]></history>
+
+        <!-- KOBIS API LIST -->
+        <service>
+            <item id="boxoffice" active="N">
+                <descript><![CDATA[박스오피스]]></descript>
+                <url><![CDATA[http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml]]></url>
+            </item>
+            <item id="movie_list" active="Y">
+                <descript><![CDATA[영화목록]]></descript>
+                <url><![CDATA[http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.xml]]></url>
+            </item>
+            <item id="movie_detail" active="N">
+                <descript><![CDATA[영화상세정보]]></descript>
+                <url><![CDATA[http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml]]></url>
+            </item>
+            <item id="people_list" active="N">
+                <descript><![CDATA[인물목록]]></descript>
+                <url><![CDATA[http://www.kobis.or.kr/kobisopenapi/webservice/rest/people/searchPeopleList.xml]]></url>
+            </item>
+            <item id="people_detail" active="N">
+                <descript><![CDATA[인물상세정보]]></descript>
+                <url><![CDATA[http://www.kobis.or.kr/kobisopenapi/webservice/rest/people/searchPeopleInfo.xml]]></url>
+            </item>
+        </service>
+        <!-- //KOBIS API LIST -->
+
+        <!-- KOBIS API REQUEST PARAMETERS -->
+        <request>
+            <item id="itemPerPage"><![CDATA[1000000]]></item>
+            <item id="curPage"><![CDATA[1]]></item>
+            <item id="prdtStartYear"><![CDATA[]]></item>
+            <item id="prdtEndYear"><![CDATA[]]></item>
+        </request>
+        <!-- //KOBIS API REQUEST PARAMETERS -->
+    </kobis>
+    <tmdb>
+        <!-- TMDB API KEY -->
+        <key><![CDATA[]]></key>
+
+        <service>
+            <item id="movie_list">
+                <descript><![CDATA[영화목록]]></descript>
+                <url><![CDATA[http://api.themoviedb.org/3/search/movie]]></url>
+            </item>
+        </service>
+
+        <image>
+            <rooturl>
+                <poster><![CDATA[http://image.tmdb.org/t/p/w780]]></poster>
+                <thumbnail><![CDATA[http://image.tmdb.org/t/p/w1280]]></thumbnail>
+            </rooturl>
+
+            <download>
+                <directory><![CDATA[D:\dev\ruby\webs\nachomovie\user-server\public\image\movie]]></directory>
+                <homeurl><![CDATA[http://nachomovie.joins.com/image/movie]]></homeurl>
+            </download>
+        </image>
+    </tmdb>
+</crawl>
