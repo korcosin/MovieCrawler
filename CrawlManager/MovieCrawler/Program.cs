@@ -9,7 +9,7 @@
         {
             Args.Parser parser = new Args.Parser(args);
 
-            Scan.Scanner runner = new Scan.Scanner(parser.getDbInfo(), parser.getKobisInfo(), parser.getTmdbInfo());
+            Scan.Scanner runner = new Scan.Scanner(parser.getKobisInfo(), parser.getTmdbInfo());
 
             runner.scan();
         }

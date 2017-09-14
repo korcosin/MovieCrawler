@@ -2,7 +2,9 @@
 <crawl>
     <kobis>
         <!-- KOBIS API KEY-->
+        <!-- //////////////////// INPUT YOUR KOBIS API KEY //////////////////// -->
         <key><![CDATA[]]></key>
+        <!-- //////////////////// INPUT YOUR KOBIS API KEY //////////////////// -->
         <!-- //KOBIS API KEY-->
 
         <history><![CDATA[d:\crawl]]></history>
@@ -43,7 +45,10 @@
     </kobis>
     <tmdb>
         <!-- TMDB API KEY -->
+        <!-- //////////////////// INPUT YOUR TMDB API KEY //////////////////// -->
         <key><![CDATA[]]></key>
+        <!-- //////////////////// INPUT YOUR TMDB API KEY //////////////////// -->
+        <!-- //TMDB API KEY -->
 
         <service>
             <item id="movie_list">
@@ -59,8 +64,7 @@
             </rooturl>
 
             <download>
-                <directory><![CDATA[D:\dev\ruby\webs\nachomovie\user-server\public\image\movie]]></directory>
-                <homeurl><![CDATA[http://nachomovie.joins.com/image/movie]]></homeurl>
+                <directory><![CDATA[d:\crawl\images]]></directory>
             </download>
         </image>
     </tmdb>
