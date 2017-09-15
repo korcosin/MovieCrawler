@@ -21,6 +21,7 @@
       * 썸네일
 * 사용중인서비스
   * [나초(나만의영화초이스)](http://www.nachomovie.com) ☜링크클릭
+<hr/>
 
 ##### 사전준비사항
 * API KEY 발급
@@ -33,6 +34,7 @@
     * 회원 정보 Settings 메뉴 클릭
     * API 메뉴 클릭
     * Request an API Key 클릭 후 필요 정보 작성 및 KEY 발급
+<hr/>
 
 ##### 수집 Config 파일 설명
 * 샘플 config 파일은 config 폴더의 config.xml이 존재합니다.
@@ -77,6 +79,8 @@
       * &lt;download&gt;
         * &lt;directory&gt;
           * 이미지 다운로드 받을 경로
+<hr/>
+
    
 ##### 수집 실행
 * CrawlManager.exe -path &lt;설정파일(config.xml) 경로&gt;
