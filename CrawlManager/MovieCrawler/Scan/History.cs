@@ -16,30 +16,44 @@ namespace GitHub.KorCosin.MovieCrawler.Scan
         {
             List<string> crawledData = new List<string>();
 
-            Console.Write("[info] read history data...");
-            string line;
-            using (System.IO.StreamReader reader = new System.IO.StreamReader(_rootdir + "\\recent.history"))
+            if (new System.IO.FileInfo(_rootdir + "\\history\\recent.history").Exists)
             {
-                while ((line = reader.ReadLine()) != null)
+                Console.Write("[info] read history data...");
+                string line;
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(_rootdir + "\\history\\recent.history"))
                 {
-                    crawledData.Add(line);
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        crawledData.Add(line);
+                    }
                 }
+                Console.WriteLine("[OK][{0}]", DateTime.Now.ToString("yyyymmddhhmmss"));
             }
-            Console.WriteLine("[OK][{0}]", DateTime.Now.ToString("yyyymmddhhmmss"));
 
             return crawledData;
         }
 
         public void backupFile()
         {
-            Console.Write("[info] backup...");
-            System.IO.File.Move(_rootdir + "\\recent.history", _rootdir + "\\backup\\" + DateTime.Now.ToString("yyyymmddhhmmss"));
-            Console.WriteLine("[OK][{0}]", DateTime.Now.ToString("yyyymmddhhmmss"));
+            if (new System.IO.FileInfo(_rootdir + "\\history\\recent.history").Exists)
+            {
+                System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(_rootdir + "\\history\\backup");
+
+                if (!dirInfo.Exists) dirInfo.Create();
+
+                Console.Write("[info] backup...");
+                System.IO.File.Move(_rootdir + "\\history\\recent.history", _rootdir + "\\history\\backup\\" + DateTime.Now.ToString("yyyymmddhhmmss"));
+                Console.WriteLine("[OK][{0}]", DateTime.Now.ToString("yyyymmddhhmmss"));
+            }
         }
 
         public void createFile()
         {
-            _writer = new System.IO.StreamWriter(_rootdir + "\\recent.history");
+            System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(_rootdir + "\\history");
+
+            if (!dirInfo.Exists) dirInfo.Create();
+
+            _writer = new System.IO.StreamWriter(_rootdir + "\\history\\recent.history");
         }
 
         public void writeInFile(string line)

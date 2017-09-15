@@ -3,11 +3,11 @@
     <kobis>
         <!-- KOBIS API KEY-->
         <!-- //////////////////// INPUT YOUR KOBIS API KEY //////////////////// -->
-        <key><![CDATA[]]></key>
+        <key><![CDATA[6bf7ebf4ad1c3938e6f9aa2e4716600f]]></key>
         <!-- //////////////////// INPUT YOUR KOBIS API KEY //////////////////// -->
         <!-- //KOBIS API KEY-->
 
-        <history><![CDATA[d:\crawl]]></history>
+        <rootdir><![CDATA[d:\github]]></rootdir>
 
         <!-- KOBIS API LIST -->
         <service>
@@ -36,17 +36,17 @@
 
         <!-- KOBIS API REQUEST PARAMETERS -->
         <request>
-            <item id="itemPerPage"><![CDATA[1000000]]></item>
+            <item id="itemPerPage"><![CDATA[10]]></item>
             <item id="curPage"><![CDATA[1]]></item>
-            <item id="prdtStartYear"><![CDATA[]]></item>
-            <item id="prdtEndYear"><![CDATA[]]></item>
+            <item id="prdtStartYear"><![CDATA[2010]]></item>
+            <item id="prdtEndYear"><![CDATA[2010]]></item>
         </request>
         <!-- //KOBIS API REQUEST PARAMETERS -->
     </kobis>
     <tmdb>
         <!-- TMDB API KEY -->
         <!-- //////////////////// INPUT YOUR TMDB API KEY //////////////////// -->
-        <key><![CDATA[]]></key>
+        <key><![CDATA[8a5489f823c2b6b6521358d415c125f8]]></key>
         <!-- //////////////////// INPUT YOUR TMDB API KEY //////////////////// -->
         <!-- //TMDB API KEY -->
 
@@ -64,7 +64,7 @@
             </rooturl>
 
             <download>
-                <directory><![CDATA[d:\crawl\images]]></directory>
+                <directory><![CDATA[d:\github\images]]></directory>
             </download>
         </image>
     </tmdb>

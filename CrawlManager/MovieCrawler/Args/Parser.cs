@@ -61,7 +61,7 @@ namespace GitHub.KorCosin.MovieCrawler.Args
                 this.kobisInfo.Services.Add(id, url);
             }
 
-            this.kobisInfo.History = rootKobis.Descendants("history").SingleOrDefault().Value;
+            this.kobisInfo.RootDir = rootKobis.Descendants("rootdir").SingleOrDefault().Value;
 
             // Request Params
             this.kobisInfo.Params.Add("targetDt", DateTime.Now.AddDays(-1).ToString("yyyyMMdd"));
@@ -90,7 +90,6 @@ namespace GitHub.KorCosin.MovieCrawler.Args
             }
 
             this.tmdbInfo.DownloadPath = rootTmdb.Descendants("download").Descendants("directory").SingleOrDefault().Value;
-            this.tmdbInfo.DownloadUrl = rootTmdb.Descendants("download").Descendants("homeurl").SingleOrDefault().Value;
             this.tmdbInfo.PosterRootUrl = rootTmdb.Descendants("image").Descendants("rooturl").Descendants("poster").SingleOrDefault().Value;
             this.tmdbInfo.ThumbnailRootUrl = rootTmdb.Descendants("image").Descendants("rooturl").Descendants("thumbnail").SingleOrDefault().Value;
         }
@@ -110,7 +109,7 @@ namespace GitHub.KorCosin.MovieCrawler.Args
     {
         public string Key { get; set; }
         public string Target { get; set; }
-        public string History { get; set; }
+        public string RootDir { get; set; }
         public Dictionary<string, string> Services { get; set; }
         public Dictionary<string, string> Params { get; set; }
 

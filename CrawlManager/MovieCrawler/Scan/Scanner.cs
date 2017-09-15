@@ -66,11 +66,15 @@ namespace GitHub.KorCosin.MovieCrawler.Scan
                 root.Descendants("dailyBoxOfficeList")
                     .Descendants("dailyBoxOffice")
                     .Select(b => b);
-
+            
             foreach (var movie in dailyBoxOffice)
             {
                 Console.WriteLine(movie.Element("movieNm").Value);
             }
+
+            //////////////////////////////////////////////////
+            ///TODO: Crawled Data Record in File
+            //////////////////////////////////////////////////
         }
 
         /// <summary>
@@ -78,7 +82,7 @@ namespace GitHub.KorCosin.MovieCrawler.Scan
         /// </summary>
         private void movie()
         {
-            History history = new History(kobisInfo.History);
+            History history = new History(kobisInfo.RootDir);
             UrlGenerator urlGenerator = new UrlGenerator();
 
             string kobiskey = kobisInfo.Key;
@@ -90,6 +94,7 @@ namespace GitHub.KorCosin.MovieCrawler.Scan
 
             List<string> crawledData = history.getCrawledDataList();
             history.backupFile();
+            history.createFile();
 
             Console.Write("[info] kobis api reading...");
             XDocument xDoc = XDocument.Load(
@@ -106,15 +111,11 @@ namespace GitHub.KorCosin.MovieCrawler.Scan
             XElement movieXml = new XElement("root");
 
             List<string> kobisList = new List<string>();
-            history.createFile();
             foreach (var movie in movieList)
             {
                 string movieCd = movie.Element("movieCd").Value;
-
-                history.writeInFile(movieCd);
                 kobisList.Add(movieCd);
             }
-            history.closeFile();
 
             Console.Write("[info] filtering exist data...");
             List<string> newItem = kobisList.AsParallel()
@@ -125,6 +126,8 @@ namespace GitHub.KorCosin.MovieCrawler.Scan
             Console.Write("[info] target data [{0}] counts", newItem.Count);
             foreach (var item in newItem)
             {
+                history.writeInFile(item);
+
                 #region MOVIE_DETAIL
                 xDoc = XDocument.Load(
                             urlGenerator.movieInfoAPI(
@@ -314,6 +317,17 @@ namespace GitHub.KorCosin.MovieCrawler.Scan
                 _scanCount++;
                 printRealtimeCrawlCount();
             }
+            history.closeFile();
+
+            System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(string.Format("{0}\\crawled\\", kobisInfo.RootDir));
+
+            if (!dirInfo.Exists) dirInfo.Create();
+
+            using (System.IO.StreamWriter record = new System.IO.StreamWriter(string.Format("{0}\\crawled\\{1}.xml", kobisInfo.RootDir, System.DateTime.Now.ToString("yyyyMMddhhmmss"))))
+            {
+                record.WriteLine(movieXml.ToString());
+                record.Flush();
+            }
 
             Console.WriteLine();
             Console.WriteLine("CRAWL COUNT : {0}", _scanCount);
@@ -363,6 +377,11 @@ namespace GitHub.KorCosin.MovieCrawler.Scan
                         new XElement("repRoleNm", repRoleNm)
                     ));
             }
+            
+            Console.WriteLine(peopleXml.ToString());
+            //////////////////////////////////////////////////
+            ///TODO: Crawled Data Record in File
+            //////////////////////////////////////////////////
         }
 
         private void printRealtimeCrawlCount()
