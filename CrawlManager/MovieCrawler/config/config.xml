@@ -3,7 +3,7 @@
     <kobis>
         <!-- KOBIS API KEY-->
         <!-- //////////////////// INPUT YOUR KOBIS API KEY //////////////////// -->
-        <key><![CDATA[6bf7ebf4ad1c3938e6f9aa2e4716600f]]></key>
+        <key><![CDATA[]]></key>
         <!-- //////////////////// INPUT YOUR KOBIS API KEY //////////////////// -->
         <!-- //KOBIS API KEY-->
 
@@ -46,7 +46,7 @@
     <tmdb>
         <!-- TMDB API KEY -->
         <!-- //////////////////// INPUT YOUR TMDB API KEY //////////////////// -->
-        <key><![CDATA[8a5489f823c2b6b6521358d415c125f8]]></key>
+        <key><![CDATA[]]></key>
         <!-- //////////////////// INPUT YOUR TMDB API KEY //////////////////// -->
         <!-- //TMDB API KEY -->
 
