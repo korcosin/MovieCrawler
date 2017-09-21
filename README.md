@@ -36,6 +36,11 @@
     * Request an API Key 클릭 후 필요 정보 작성 및 KEY 발급
 <hr/>
 
+##### 제약사항
+* 영화진흥위원회 API KEY는 1일 3000회 사용이 기본 정책이다.
+* 기본 적으로 키 발급은 2개를 할 수 있으므로, 하루 최대 6000개의 API를 사용 할 수 있다.
+<hr/>
+
 ##### 수집 Config 파일 설명
 * 샘플 config 파일은 config 폴더의 config.xml이 존재합니다.
 * &lt;kobis&gt;

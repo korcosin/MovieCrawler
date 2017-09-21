@@ -66,15 +66,23 @@ namespace GitHub.KorCosin.MovieCrawler.Scan
                 root.Descendants("dailyBoxOfficeList")
                     .Descendants("dailyBoxOffice")
                     .Select(b => b);
-            
+
+            XElement movieXml = new XElement("root");
+
             foreach (var movie in dailyBoxOffice)
             {
-                Console.WriteLine(movie.Element("movieNm").Value);
+                movieXml.Add(new XElement("item", movie.Element("movieNm").Value));
             }
+            System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(string.Format("{0}\\crawled\\boxoffice\\", kobisInfo.RootDir));
 
-            //////////////////////////////////////////////////
-            ///TODO: Crawled Data Record in File
-            //////////////////////////////////////////////////
+            if (!dirInfo.Exists) dirInfo.Create();
+            
+            using (System.IO.StreamWriter record = new System.IO.StreamWriter(string.Format("{0}\\crawled\\boxoffice\\{1}.xml", kobisInfo.RootDir, System.DateTime.Now.ToString("yyyyMMddhhmmss"))))
+            {
+                
+                record.WriteLine(movieXml.ToString());
+                record.Flush();
+            }
         }
 
         /// <summary>
@@ -319,11 +327,11 @@ namespace GitHub.KorCosin.MovieCrawler.Scan
             }
             history.closeFile();
 
-            System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(string.Format("{0}\\crawled\\", kobisInfo.RootDir));
+            System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(string.Format("{0}\\crawled\\movie\\", kobisInfo.RootDir));
 
             if (!dirInfo.Exists) dirInfo.Create();
 
-            using (System.IO.StreamWriter record = new System.IO.StreamWriter(string.Format("{0}\\crawled\\{1}.xml", kobisInfo.RootDir, System.DateTime.Now.ToString("yyyyMMddhhmmss"))))
+            using (System.IO.StreamWriter record = new System.IO.StreamWriter(string.Format("{0}\\crawled\\movie\\{1}.xml", kobisInfo.RootDir, System.DateTime.Now.ToString("yyyyMMddhhmmss"))))
             {
                 record.WriteLine(movieXml.ToString());
                 record.Flush();

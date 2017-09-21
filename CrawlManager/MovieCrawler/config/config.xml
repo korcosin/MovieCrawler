@@ -3,7 +3,7 @@
     <kobis>
         <!-- KOBIS API KEY-->
         <!-- //////////////////// INPUT YOUR KOBIS API KEY //////////////////// -->
-        <key><![CDATA[]]></key>
+        <key><![CDATA[430156241533f1d058c603178cc3ca0e]]></key>
         <!-- //////////////////// INPUT YOUR KOBIS API KEY //////////////////// -->
         <!-- //KOBIS API KEY-->
 
@@ -11,11 +11,11 @@
 
         <!-- KOBIS API LIST -->
         <service>
-            <item id="boxoffice" active="N">
+            <item id="boxoffice" active="Y">
                 <descript><![CDATA[박스오피스]]></descript>
                 <url><![CDATA[http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml]]></url>
             </item>
-            <item id="movie_list" active="Y">
+            <item id="movie_list" active="N">
                 <descript><![CDATA[영화목록]]></descript>
                 <url><![CDATA[http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.xml]]></url>
             </item>
